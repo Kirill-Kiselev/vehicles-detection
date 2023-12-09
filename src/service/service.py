@@ -8,11 +8,11 @@ from tqdm import tqdm
 # from src.service.blur_detector import BlurDetector
 # from src.service.preprocessor import Preprocessor
 # from src.service.region_filter import RegionFilter
-# from src.service.detector import Detector
+from src.service.detector import Detector
 # from src.service.heuristics import Heuristics
 from src.environment import env
 from src.service.loader import Loader
-# from src.service.models import Detections, Region, TranscribedPage, Point
+from src.service.models import Detections
 # from src.service.recognizer import Recognizer
 # from src.service.saver import Saver
 # from src.service.visualizer import Visualizer
@@ -26,7 +26,7 @@ class Service:
             loader: Loader,
             # preprocessor: Preprocessor,
             # region_detector: Detector,
-            # detector: Detector,
+            detector: Detector,
             # heuristics: Heuristics,
             # visualizer: Visualizer,
             # saver: Saver
@@ -35,7 +35,7 @@ class Service:
         # self._preprocessor = preprocessor
         # self._region_detector = region_detector
         # self._heuristics = heuristics
-        # self._detector = detector
+        self._detector = detector
         # self._visualizer = visualizer
         # self._saver = saver
 
@@ -54,9 +54,16 @@ class Service:
 
                 while True:
                     ret, frame = cap.read()
-
                     if not ret:
                         break
+                    detections: Detections = self._detector.detect(frame)
+
+                    for detection in detections:
+                        cv2.rectangle(
+                            frame,
+                            detection.absolute_box.p1.as_tuple,
+                            detection.absolute_box.p2.as_tuple,
+                            (255, 0, 0), 5, )
 
                     cv2.polylines(
                         frame,

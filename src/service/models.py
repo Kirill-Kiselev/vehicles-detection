@@ -62,7 +62,6 @@ class Detection:
     relative_box: Box[float]
     label: int
     score: float
-    crop: Image
 
 
 @dataclass

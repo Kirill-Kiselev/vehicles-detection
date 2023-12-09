@@ -1,0 +1,1 @@
+from src.detectors.openvino_detector.ov_detector import OpenVINODetector
