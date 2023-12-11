@@ -18,7 +18,7 @@ from src.service.models import Detections
 from src.service.saver import Saver
 # from src.service.visualizer import Visualizer
 from src.utils.fps import FPS
-from src.utils.intervals import find_true_intervals
+from src.utils.intervals_functions import find_true_intervals, convert_time_intervals
 
 
 class Service:
@@ -90,6 +90,13 @@ class Service:
                     intervals = json.load(intervals)
 
                 ground_truth = intervals[video_title]
+                gt_interval = convert_time_intervals(
+                    intervals=ground_truth,
+                    length=len(alarm_list)
+                )
+                print(video_title)
+                print('Precision:' + str(precision_score(gt_interval, alarm_list)))
+                print('Recall:' + str(recall_score(gt_interval, alarm_list)))
 
             detection_results[video_title] = find_true_intervals(lst=alarm_list)
 

@@ -16,3 +16,13 @@ def find_true_intervals(lst: list) -> list:
         intervals.append(current_interval)
 
     return intervals
+
+
+def convert_time_intervals(intervals: list, length: int) -> list:
+    result = [False] * length
+
+    for start, end in intervals:
+        result[start:end + 1] = [True] * (end - start + 1)
+
+    return result
+

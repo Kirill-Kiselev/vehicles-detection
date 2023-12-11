@@ -27,14 +27,15 @@ class Environment:
         '--time_intervals_path',
         type=Path,
         help='Path to time intervals',
-        default=Path(__file__).resolve().parent.parent
+        default=base_dir / 'assets/time_intervals.json'
     )
 
     args = parser.parse_args()
     video_path = args.video_path
     polygon_path = args.polygon_path
     output_path = args.output_path
-
+    pipeline_mode = args.pipeline_mode
+    time_intervals_path = args.time_intervals_path
 
     # def __init__(self):
         # self.video_path = self.env.path('VIDEO_PATH')
