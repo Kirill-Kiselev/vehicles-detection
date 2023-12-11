@@ -5,7 +5,7 @@ from typing import Any
 
 from openvino.runtime import Core
 
-from src.service.models import Blob, Image
+from service.models import Blob, Image
 
 
 class OpenVINOAdapterMixin:

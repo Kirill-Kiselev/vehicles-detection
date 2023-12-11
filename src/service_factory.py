@@ -7,7 +7,7 @@ from service.detector import Detector
 from service.loader import Loader
 from service.heuristics import Heuristics
 from service.saver import Saver
-from src.service.service import Service
+from service.service import Service
 
 
 class ServiceFactory:

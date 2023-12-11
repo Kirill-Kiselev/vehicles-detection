@@ -1,3 +1,3 @@
-from src.utils.fps import FPS
-from src.utils.intervals_functions import find_true_intervals
+from utils.fps import FPS
+from utils.intervals_functions import find_true_intervals
 

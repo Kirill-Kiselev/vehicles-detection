@@ -2,7 +2,7 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-from src.service.saver import Saver
+from service.saver import Saver
 
 
 class JSONSaver(Saver):
