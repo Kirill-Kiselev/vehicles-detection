@@ -1,0 +1,8 @@
+#!/bin/bash
+
+python src/main.py \
+    -v /path/to/your/video.mp4 \
+    -p /path/to/your/polygon.json \
+    -o /path/to/your/output/file.avi \
+    -m save \
+    -t /path/to/your/time_intervals.json
