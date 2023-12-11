@@ -1,16 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import List
-
+from collections import defaultdict
 from src.service.models import TranscribedPage
 
 
 class Saver(ABC):
-    @abstractmethod
-    def update_data(
-        self, transcribed: TranscribedPage, error_lst: List[str]
-    ) -> None:
-        raise NotImplementedError('Subclasses should implement this')
 
     @abstractmethod
-    def save(self) -> None:
+    def save(self, results: defaultdict) -> None:
         raise NotImplementedError('Subclasses should implement this')

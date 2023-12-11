@@ -1,8 +1,8 @@
 from src.detectors import OpenVINODetector
 from src.loders import FolderLoader
-# from src.heuristics import HeuristicsV1
+from src.heuristics import HeuristicsV1
 # from src.preprocessor.preprocessor_v1.preprocessor_v1 import PreprocessorV1
-# from src.savers import JSONSaver
+from src.savers import JSONSaver
 from src.environment import Environment
 from src.service.detector import Detector
 from src.service.loader import Loader
@@ -32,9 +32,10 @@ class ServiceFactory:
             width=512,
             height=512
         )
+        heuristics: Heuristics = HeuristicsV1()
         # recognizer: Recognizer = recognizer_factory.create(key=env.recognition_model)
         # visualizer: Visualizer = visualizer_factory.create(key=env.visualizer)
-        # saver: Saver = JSONSaver()
+        saver: Saver = JSONSaver(save_path=env.output_path)
 
         return Service(
             loader=loader,
@@ -42,10 +43,10 @@ class ServiceFactory:
             # blur_detector=blur_detector,
             # barcode_detector=barcode_detector,
             # region_detector=region_detector,
-            # heuristics=heuristics,
+            heuristics=heuristics,
             # region_filter=region_filter,
             detector=detector,
             # recognizer=recognizer,
             # visualizer=visualizer,
-            # saver=saver
+            saver=saver
         )
