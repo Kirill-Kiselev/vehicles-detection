@@ -5,8 +5,6 @@ from pathlib import Path
 
 
 class Environment:
-    # env = Env()
-    # env.read_env()
 
     base_dir = Path(__file__).resolve().parent.parent
 
@@ -36,12 +34,6 @@ class Environment:
     output_path = args.output_path
     pipeline_mode = args.pipeline_mode
     time_intervals_path = args.time_intervals_path
-
-    # def __init__(self):
-        # self.video_path = self.env.path('VIDEO_PATH')
-        # self.polygon_path = self.env.path('POLYGON_PATH')
-        # self.time_intervals = self.env.path('TIME_INTERVALS_PATH')
-        # self.output_path = self.env.path('OUTPUT_PATH')
 
 
 env = Environment()

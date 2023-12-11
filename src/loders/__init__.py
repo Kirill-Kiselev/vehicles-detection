@@ -1,1 +1,1 @@
-from src.loders.folder_loader import FolderLoader
+from loders.folder_loader import FolderLoader

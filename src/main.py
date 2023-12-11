@@ -1,5 +1,5 @@
-from src.common_controller import CommonController
-from src.service_factory import ServiceFactory
+from common_controller import CommonController
+from service_factory import ServiceFactory
 
 
 if __name__ == '__main__':

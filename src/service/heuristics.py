@@ -1,8 +1,7 @@
 import numpy as np
 
 from abc import ABC, abstractmethod
-from typing import List
-from src.service.models import Detections
+from service.models import Detections
 
 
 class Heuristics(ABC):

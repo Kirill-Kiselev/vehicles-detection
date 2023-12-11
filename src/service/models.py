@@ -7,8 +7,8 @@ from typing import Any, Generic, List, Tuple, TypeVar
 # these constants show order of channels
 BGR = RGB = 3
 
-Image = NDArray[(Any, Any, BGR), UInt8]  # `[height, width, channels]`
-Blob = NDArray[(1, BGR, Any, Any), UInt8]  # `[batch, channels, height, width]`
+Image = NDArray[(Any, Any, BGR), UInt8]  # [height, width, channels]
+Blob = NDArray[(1, BGR, Any, Any), UInt8]  # [batch, channels, height, width]
 
 
 Coordinate = TypeVar('Coordinate', int, float)
@@ -64,55 +64,4 @@ class Detection:
     score: float
 
 
-@dataclass
-class TextBox:
-    box: Box[int]
-    text: str
-
-
-@dataclass
-class Letter:
-    label: int
-    absolute_box: Box[int]
-
-
-Letters = List[Letter]
-
-
 Detections = List[Detection]
-
-
-@dataclass
-class Region:
-    image: Image
-    coord_left_top: Point
-
-
-@dataclass
-class RegionsForDetect:
-    type_: List[Region]
-    number: List[Region]
-
-
-@dataclass
-class StatBox:
-    text_box: TextBox
-    type_: str
-    distance: float
-
-
-@dataclass
-class TranscribedPage:
-    barcode: TextBox = None
-    type_: TextBox = None
-    number: TextBox = None
-    page_order_status: str = None
-
-    @property
-    def to_list(self):
-        return [
-            self.barcode, self.type_,
-            self.number]
-
-
-Text = List[str]

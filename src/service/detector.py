@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.service.models import Detections, Image
+from service.models import Detections, Image
 
 
 class Detector(ABC):

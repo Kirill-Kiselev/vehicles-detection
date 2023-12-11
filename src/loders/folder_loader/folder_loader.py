@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Iterator, Optional
 
-from src.service.loader import Loader
+from service.loader import Loader
 
 
 class FolderLoader(Loader):

@@ -5,20 +5,14 @@ import numpy as np
 from collections import defaultdict
 from sklearn.metrics import precision_score, recall_score
 
-# from src.service.barcode_detector import BarcodeDetector
-# from src.service.blur_detector import BlurDetector
-# from src.service.preprocessor import Preprocessor
-# from src.service.region_filter import RegionFilter
-from src.service.detector import Detector
-from src.service.heuristics import Heuristics
-from src.environment import env
-from src.service.loader import Loader
-from src.service.models import Detections
-# from src.service.recognizer import Recognizer
-from src.service.saver import Saver
-# from src.service.visualizer import Visualizer
-from src.utils.fps import FPS
-from src.utils.intervals_functions import find_true_intervals, convert_time_intervals
+from service.detector import Detector
+from service.heuristics import Heuristics
+from environment import env
+from service.loader import Loader
+from service.models import Detections
+from service.saver import Saver
+from utils.fps import FPS
+from utils.intervals_functions import find_true_intervals, convert_time_intervals
 
 
 class Service:

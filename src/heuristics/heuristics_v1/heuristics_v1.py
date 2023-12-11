@@ -1,8 +1,8 @@
 import numpy as np
 from shapely import Polygon, box
 
-from src.service.models import Detections
-from src.service.heuristics import Heuristics
+from service.models import Detections
+from service.heuristics import Heuristics
 
 
 class HeuristicsV1(Heuristics):

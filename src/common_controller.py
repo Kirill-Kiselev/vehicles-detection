@@ -1,5 +1,5 @@
-from src.environment import env
-from src.service_factory import ServiceFactory
+from environment import env
+from service_factory import ServiceFactory
 
 
 class CommonController:

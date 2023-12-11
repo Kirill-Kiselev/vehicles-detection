@@ -1,11 +1,10 @@
-from typing import Any
-
 import cv2
 import numpy as np
+from typing import Any
 
-from src.service.detector import Detector
-from src.service.models import Blob, Detections, Image, Detection, Box, Point
-from src.utils.openvino_adapter_mixin import OpenVINOAdapterMixin
+from service.detector import Detector
+from service.models import Blob, Detections, Image, Detection, Box, Point
+from utils.openvino_adapter_mixin import OpenVINOAdapterMixin
 
 
 class OpenVINODetector(Detector, OpenVINOAdapterMixin):
@@ -23,7 +22,7 @@ class OpenVINODetector(Detector, OpenVINOAdapterMixin):
 
     def _pre_processing(self, image: Image) -> Blob:
         image = cv2.resize(image, (self._width, self._height))
-        image = image.transpose((2, 0, 1))  # BHWC to BCHW
+        image = image.transpose((2, 0, 1))
         image = np.expand_dims(image, axis=0)
         return image
 
