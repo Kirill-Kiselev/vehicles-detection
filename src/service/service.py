@@ -1,9 +1,11 @@
 import json
 import cv2
 import numpy as np
+import warnings
 
 from collections import defaultdict
 from sklearn.metrics import precision_score, recall_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 from service.detector import Detector
 from service.heuristics import Heuristics
@@ -13,6 +15,8 @@ from service.models import Detections
 from service.saver import Saver
 from utils.fps import FPS
 from utils.intervals_functions import find_true_intervals, convert_time_intervals
+
+warnings.filterwarnings('ignore')
 
 
 class Service:
@@ -38,6 +42,7 @@ class Service:
             video_title = video_path.split('/')[-1]
             polygon = np.array(f[video_title])
             alarm_list = []
+
             with all_FPS:
                 cap = cv2.VideoCapture(video_path)
                 if not cap.isOpened():
@@ -72,7 +77,7 @@ class Service:
                             detection.absolute_box.p2.as_tuple,
                             (255, 0, 0), 5, )
 
-                    cv2.imshow('Video', frame)
+                    cv2.imshow(f'{video_title}', frame)
                     if cv2.waitKey(25) & 0xFF == ord('q'):
                         break
 
@@ -88,9 +93,16 @@ class Service:
                     intervals=ground_truth,
                     length=len(alarm_list)
                 )
-                print(video_title)
-                print('Precision:' + str(precision_score(gt_interval, alarm_list)))
-                print('Recall:' + str(recall_score(gt_interval, alarm_list)))
+
+                precision = round(precision_score(gt_interval, alarm_list), 3)
+                recall = round(recall_score(gt_interval, alarm_list), 3)
+                accuracy = round(accuracy_score(gt_interval, alarm_list), 3)
+                print('-----------------', video_title, '-----------------')
+                print('Precision: ' + str(precision), end=' | ')
+                print('Recall: ' + str(recall), end=' | ')
+                print('Accuracy: ' + str(accuracy))
+                print('Confusion matrix:')
+                print(confusion_matrix(gt_interval, alarm_list))
 
             detection_results[video_title] = find_true_intervals(lst=alarm_list)
 
