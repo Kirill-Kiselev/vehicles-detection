@@ -177,3 +177,4 @@ assets/videos/*.mp4
 assets/polygons.json
 assets/time_intervals.json
 assets/output/*.json
+assets/*.pdf
