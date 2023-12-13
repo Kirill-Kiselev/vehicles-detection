@@ -1,6 +1,5 @@
 import argparse
 
-from environs import Env
 from pathlib import Path
 
 
